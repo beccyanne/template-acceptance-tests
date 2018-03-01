@@ -22,7 +22,7 @@ import uk.gov.hmrc.integration.cucumber.pages.ExamplePage._
 
 class ExampleStepDef extends ScalaDsl with EN {
 
-  Given("""^A user wants to use the Auth Login Stub$""") { () =>
+  Given("""^a user wants to use the Auth Login Stub$""") { () =>
     navigateTo(url)
     checkPageHeading(header)
   }
