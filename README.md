@@ -1,37 +1,38 @@
 
 # template-acceptance-tests
 
-This repo contain the acceptance tests for the [template] service.
+Welcome to the HMRC Digital Acceptance Test Template. This repo can be used by teams who are building a new service that will need UI driven Acceptance Tests.
 
 It is built using:
 
-cucumber 1.2.4
+* Cucumber 1.2.4
+* Java 1.8
+* Scala 2.11.7
+* sbt 0.13.16
 
-java 1.8
+### Support
+This repo is supported by the Test Community  for any information on how to use it, or if you'd like any help please come to #community-testing in Slack.
 
-Scala 2.11.7
+### Contributions
+If you'd like to contribute, please raise a PR and notify us in #community-testing - one of the core maintainers will take a look and merge the PR.
 
-SBT to build 0.13.16
+### Testing your contributions
+To ensure your changes haven't broken the template, you can run the following commands locally before submitting your PR:
 
-Getting started
-Ensure that you have a working linux environment.
+    sudo mongod
+    sm --start ACCEPTANCE_TEST_TEMPLATE -f
+    ./run_local.sh
 
-Execution
-In /src/test/scala/uk/gov/hmrc/integration/cucumber there are scala classes which control what is run according to the tests tagged with the below tags. The main class is Runner which selects and runs tests marked @. You can run ./run_integration_local.sh to run tests against a local version of the application
+### How to use this template
+We _always_ keep UI driven tests to a minimum, preferring instead to drive tests down into Unit and Integration layers instead. Please read the MDTP Test Approach for more details: https://confluence.tools.tax.service.gov.uk/display/DTRG/MDTP+Test+Approach
+Additionally, we want you to make smart choices that suit your project and team - if this template doesn't work for you - please go ahead and implement your tests without using it! Or come to #community-testing and we can chat about how you can best solve your issues.
 
-###  Test Automation environment setup
-
-    1. Ensure that you have installed InteliJ Idea
-    2. Once you have installed IDEA install Cucumber for scala
-    3. Clone this repo.
-    4. Import the project into InteliJ
-    
 ###  Project structure
 Each part of the application's functionality is described by feature files. The feature files are arranged into folders under src/test/features and grouped into the main areas of the application.
 Each step of the feature files is defined by executable test steps in the scala code under the src/test/scala/uk/gov/hmrc/integration/test/stepdefs area and those utilise Page object models under src/test/scala/uk/gov/hmrc/integration/cucumber/pages which are the single place where page specific properties and variables are configured.
 
 ###  Example Feature
-The example feature calls the Authority Wizard page and relies on the following services being started :
+The example feature calls the Authority Wizard page and relies on the following services being started:
 
 
     ASSETS_FRONTEND
@@ -91,8 +92,3 @@ Note i - if you only wish to run either the browsers or devices you need to remo
 
 Note ii - the changes made to browserConfig.properties should not be pushed to GitHub and therefore you should make sure that this file is included on the gitignore file for your project
 
- ### Messages
-    
- If there is a requirement to verify any text within your application users should create a messages.properties file and place it in the following location where it can be referenced:
-  
-  ~/Applications/pe/template-acceptance-tests/src/test/resources/   
